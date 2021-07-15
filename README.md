@@ -1,2 +1,2 @@
 # designPatternCommand
-Project for learning how to use the COMMAND design pattern
+Project on learning how to use the COMMAND design pattern
