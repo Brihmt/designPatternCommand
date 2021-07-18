@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 */
                     return true;
-
                 default:
                     Log.e("DragDrop Example","Unknown action type received by OnDragListener.");
                     break;
