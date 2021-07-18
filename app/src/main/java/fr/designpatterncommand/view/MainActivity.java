@@ -1,8 +1,10 @@
-package fr.designpatterncommand;
+package fr.designpatterncommand.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import fr.designpatterncommand.R;
 
 public class MainActivity extends AppCompatActivity {
 
