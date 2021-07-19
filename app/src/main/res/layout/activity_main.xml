@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.MainActivity">
-
+    <!-- TODO: Mettre en forme l'activité(ajouter terrain de jeu, personnage etc) -->
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="match_parent"
