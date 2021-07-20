@@ -22,6 +22,6 @@ public class ManagerAction {
     }
 
     public void execCommandList(){
-
+        commandList.forEach(command -> character.move(command.operation()));
     }
 }
