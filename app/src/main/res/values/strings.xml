@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DesignPatternCommand</string>
+    <string name="lblStart">Démarrer</string>
 </resources>
