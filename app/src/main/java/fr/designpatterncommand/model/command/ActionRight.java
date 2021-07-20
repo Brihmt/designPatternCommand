@@ -1,4 +1,15 @@
 package fr.designpatterncommand.model.command;
 
-public class ActionRight {
+import fr.designpatterncommand.R;
+import fr.designpatterncommand.model.Movement;
+
+public class ActionRight extends Command{
+    public ActionRight() {
+        numImage = R.drawable.arrowright;
+    }
+
+    @Override
+    public Movement operation() {
+        return Movement.RIGHT;
+    }
 }
