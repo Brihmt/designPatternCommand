@@ -22,6 +22,22 @@ public class ManagerAction {
     }
 
     public void execCommandList(){
-        commandList.forEach(command -> character.move(command.operation()));
+        //commandList.forEach(command -> character.move(command.operation()));
+        for (Command command:commandList) {
+            switch (command.operation()){
+                case TOP:
+                    character.moveTop();
+                    break;
+                case LEFT:
+                    character.moveLeft();
+                    break;
+                case RIGHT:
+                    character.moveRight();
+                    break;
+                case BOTTOM:
+                    character.moveBottom();
+                    break;
+            }
+        }
     }
 }

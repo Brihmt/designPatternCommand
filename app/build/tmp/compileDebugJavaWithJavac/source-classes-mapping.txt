@@ -1,0 +1,22 @@
+fr/designpatterncommand/model/command/ActionRight.java
+ fr.designpatterncommand.model.command.ActionRight
+fr/designpatterncommand/model/command/ActionTop.java
+ fr.designpatterncommand.model.command.ActionTop
+fr/designpatterncommand/model/dragShadowBuilder/MyDragShadowBuilder.java
+ fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder
+fr/designpatterncommand/model/Character.java
+ fr.designpatterncommand.model.Character
+fr/designpatterncommand/model/ManagerAction.java
+ fr.designpatterncommand.model.ManagerAction
+fr/designpatterncommand/model/command/ActionBottom.java
+ fr.designpatterncommand.model.command.ActionBottom
+fr/designpatterncommand/view/MainActivity.java
+ fr.designpatterncommand.view.MainActivity
+ fr.designpatterncommand.view.MainActivity$1
+ fr.designpatterncommand.view.MainActivity$MyDragEventListener
+fr/designpatterncommand/model/command/ActionLeft.java
+ fr.designpatterncommand.model.command.ActionLeft
+fr/designpatterncommand/model/command/Command.java
+ fr.designpatterncommand.model.command.Command
+fr/designpatterncommand/BuildConfig.java
+ fr.designpatterncommand.BuildConfig

@@ -40,9 +40,19 @@ public class Character {
     }
 
     public void move(Movement movement){
-        if(movement==Movement.TOP) moveTop();
-        if(movement==Movement.BOTTOM) moveBottom();
-        if(movement==Movement.LEFT) moveLeft();
-        if(movement==Movement.RIGHT) moveRight();
+        switch (movement){
+            case TOP:
+                moveTop();
+                break;
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case BOTTOM:
+                moveBottom();
+                break;
+        }
     }
 }

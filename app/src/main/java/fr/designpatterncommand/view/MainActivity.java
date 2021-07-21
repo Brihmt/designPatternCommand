@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ll1=(LinearLayout)findViewById(R.id.ll1);
         ll2=(LinearLayout)findViewById(R.id.ll2);
         ll3=(LinearLayout)findViewById(R.id.ll3);
-
+        
         MyDragEventListener myDragEventListener = new MyDragEventListener();
         imageView.setOnDragListener(myDragEventListener);
         ll1.setOnDragListener(myDragEventListener);
