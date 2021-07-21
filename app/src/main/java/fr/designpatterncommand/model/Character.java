@@ -14,7 +14,7 @@ public class Character {
     public Character(){
         posX = 1;
         posY = 1;
-        characterImg = R.drawable.arrowleft;
+        characterImg = R.drawable.character;
     }
 
     public int getPosX() {

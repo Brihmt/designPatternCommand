@@ -9,17 +9,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import fr.designpatterncommand.R;
+import fr.designpatterncommand.model.ManagerAction;
 import fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private LinearLayout ll1,ll2,ll3;
+    private Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
         ll1=(LinearLayout)findViewById(R.id.ll1);
         ll2=(LinearLayout)findViewById(R.id.ll2);
         ll3=(LinearLayout)findViewById(R.id.ll3);
+        btnStart=(Button)findViewById(R.id.btnStart);
         
         MyDragEventListener myDragEventListener = new MyDragEventListener();
         imageView.setOnDragListener(myDragEventListener);
         ll1.setOnDragListener(myDragEventListener);
         ll2.setOnDragListener(myDragEventListener);
         ll3.setOnDragListener(myDragEventListener);
+        btnStart.setOnClickListener(btnStartListener);
 
         imageView.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
@@ -111,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return false;
+        }
+    };
+
+    private View.OnClickListener btnStartListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.i("test", "Boutton start cliqué");
+            //managerAction.execCommandList();
         }
     };
 }

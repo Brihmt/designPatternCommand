@@ -35,10 +35,10 @@ public class FieldView extends View {
     @Override
     protected void onSizeChanged( int width, int height, int oldw, int oldh){
         super.onSizeChanged( width, height, oldw, oldh );
-        this.widthZone= width/8;
+        this.widthZone= width/(float)8;
         this.setMinimumHeight((int)widthZone*5);
-        //imgField = BitmapFactory.decodeResource(getResources(), R.drawable.field);
-        //imgField = Bitmap.createScaledBitmap(imgField,width,width,true);
+        imgField = BitmapFactory.decodeResource(getResources(), R.drawable.field);
+        imgField = Bitmap.createScaledBitmap(imgField,width,width,true);
     }
 
     public void drawCharacter(Canvas canvas, Character chara){
@@ -50,8 +50,8 @@ public class FieldView extends View {
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
 
-        //canvas.drawBitmap(imgField, 0, 0, paint);
-        //drawCharacter(canvas,character);
+        canvas.drawBitmap(imgField, 0, 0, paint);
+        drawCharacter(canvas,character);
     }
 
     public void setCharacter(Character charac){
