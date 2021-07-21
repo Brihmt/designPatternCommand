@@ -1831,6 +1831,7 @@ id beginning
 id blocking
 id bottom
 id bounce
+id btnStart
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1903,6 +1904,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id fieldView
 id fill
 id fill_horizontal
 id fill_vertical
@@ -2368,6 +2370,7 @@ string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
+string lblStart
 string material_clock_display_divider
 string material_clock_toggle_content_description
 string material_hour_selection

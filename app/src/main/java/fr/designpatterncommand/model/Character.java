@@ -4,6 +4,8 @@ import android.widget.ImageView;
 
 import java.util.Vector;
 
+import fr.designpatterncommand.R;
+
 // TODO: Ajouter une image du perso/ ses déplacements
 public class Character {
     private int posX, posY;
@@ -12,7 +14,7 @@ public class Character {
     public Character(){
         posX = 1;
         posY = 1;
-        //characterImg = R.drawable.character;
+        characterImg = R.drawable.arrowleft;
     }
 
     public int getPosX() {
@@ -22,6 +24,8 @@ public class Character {
     public int getPosY() {
         return posY;
     }
+
+    public int getImg(){ return characterImg; }
 
     public void moveTop(){
         if(posY>1) posY--;

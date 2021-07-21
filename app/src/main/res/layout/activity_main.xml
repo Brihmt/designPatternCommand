@@ -11,24 +11,32 @@
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:background="@color/teal_700"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="298dp"
-            android:layout_height="wrap_content"
-            android:text="@string/lblStart" />
+        <fr.designpatterncommand.view.FieldView
+            android:id="@+id/fieldView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </fr.designpatterncommand.view.FieldView>
+
     </LinearLayout>
+    <!-- TODO: lier le bouton a une méthode -->
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lblStart"
+        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:id="@+id/ll3"
         android:layout_width="match_parent"
         android:layout_height="211dp"
         android:background="#222233"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
     </LinearLayout>
 
@@ -37,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#AA5533"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageViewMainWindows"
