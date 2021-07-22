@@ -1,6 +1,7 @@
 package fr.designpatterncommand.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -15,13 +16,16 @@ import android.widget.LinearLayout;
 
 import fr.designpatterncommand.R;
 import fr.designpatterncommand.model.ManagerAction;
+import fr.designpatterncommand.model.Movement;
+import fr.designpatterncommand.model.command.Command;
 import fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ImageView imageViewTop, imageViewBottom, imageViewLeft, imageViewRight;
     private LinearLayout ll2,ll3;
     private Button btnStart;
+    private RecyclerView recyclerView;
 
     private ManagerAction manager;
 
@@ -32,27 +36,35 @@ public class MainActivity extends AppCompatActivity {
 
         manager=new ManagerAction();
 
-        imageView=(ImageView)findViewById(R.id.imageViewMainWindows);
+        imageViewTop=(ImageView)findViewById(R.id.imgViewTop);
+        imageViewBottom=(ImageView)findViewById(R.id.imgViewBottom);
+        imageViewLeft=(ImageView)findViewById(R.id.imgViewLeft);
+        imageViewRight=(ImageView)findViewById(R.id.imgViewRight);
+
 
         ll2=(LinearLayout)findViewById(R.id.ll2);
         ll3=(LinearLayout)findViewById(R.id.ll3);
         btnStart=(Button)findViewById(R.id.btnStart);
+        recyclerView=(RecyclerView)findViewById(R.id.rclView);
         
         MyDragEventListener myDragEventListener = new MyDragEventListener();
-        imageView.setOnDragListener(myDragEventListener);
+        imageViewTop.setOnDragListener(myDragEventListener);
+        imageViewBottom.setOnDragListener(myDragEventListener);
+        imageViewLeft.setOnDragListener(myDragEventListener);
+        imageViewRight.setOnDragListener(myDragEventListener);
         ll2.setOnDragListener(myDragEventListener);
         ll3.setOnDragListener(myDragEventListener);
 
-        imageView.setOnLongClickListener(new View.OnLongClickListener(){
+        imageViewTop.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v) {
-                ClipData.Item item = new ClipData.Item("Top");
+                ClipData.Item item = new ClipData.Item("0");
 
                 ClipData dragData = new ClipData(
                         (CharSequence) v.getTag(),
                         new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN } ,
                         item);
-                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageView);
+                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViewTop);
                 v.startDrag(dragData,myShadow,null,0);
                 return true;
             }
@@ -98,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     ClipData clip=event.getClipData();
                     Log.i("testui",(String)clip.getItemAt(0).getText());
                     Log.i("testui","id: " +v.getId());
+                    //manager.addAction(Movement.values()[(int)clip.getItemAt(0).getText()]);
                     v.invalidate();
                     return true;
 
@@ -123,6 +136,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void clicButtonStart(View sender){
-        //managerAction.execCommandList();
+        //manager.execCommandList();
     }
 }
