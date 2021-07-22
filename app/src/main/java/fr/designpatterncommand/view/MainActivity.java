@@ -20,31 +20,33 @@ import fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    private LinearLayout ll1,ll2,ll3;
+    private LinearLayout ll2,ll3;
     private Button btnStart;
+
+    private ManagerAction manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        manager=new ManagerAction();
+
         imageView=(ImageView)findViewById(R.id.imageViewMainWindows);
-        ll1=(LinearLayout)findViewById(R.id.ll1);
+
         ll2=(LinearLayout)findViewById(R.id.ll2);
         ll3=(LinearLayout)findViewById(R.id.ll3);
         btnStart=(Button)findViewById(R.id.btnStart);
         
         MyDragEventListener myDragEventListener = new MyDragEventListener();
         imageView.setOnDragListener(myDragEventListener);
-        ll1.setOnDragListener(myDragEventListener);
         ll2.setOnDragListener(myDragEventListener);
         ll3.setOnDragListener(myDragEventListener);
-        btnStart.setOnClickListener(btnStartListener);
 
         imageView.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v) {
-                ClipData.Item item = new ClipData.Item("Image moved");
+                ClipData.Item item = new ClipData.Item("Top");
 
                 ClipData dragData = new ClipData(
                         (CharSequence) v.getTag(),
@@ -93,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
 
                 case DragEvent.ACTION_DROP:
-
+                    ClipData clip=event.getClipData();
+                    Log.i("testui",(String)clip.getItemAt(0).getText());
+                    Log.i("testui","id: " +v.getId());
                     v.invalidate();
                     return true;
 
@@ -118,11 +122,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener btnStartListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.i("test", "Boutton start cliqué");
-            //managerAction.execCommandList();
-        }
-    };
+    public void clicButtonStart(View sender){
+        //managerAction.execCommandList();
+    }
 }

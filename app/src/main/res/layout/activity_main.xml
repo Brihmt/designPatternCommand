@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.MainActivity">
-    <!-- TODO: Mettre en forme l'activité(ajouter terrain de jeu, personnage etc) -->
 
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="245dp"
         android:background="@color/teal_700"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -23,12 +22,12 @@
         </fr.designpatterncommand.view.FieldView>
 
     </LinearLayout>
-    <!-- TODO: lier le bouton a une méthode -->
     <Button
         android:id="@+id/btnStart"
         android:layout_width="208dp"
         android:layout_height="wrap_content"
         android:text="@string/lblStart"
+        android:onClick="clicButtonStart"
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout

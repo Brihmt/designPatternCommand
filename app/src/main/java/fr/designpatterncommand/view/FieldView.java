@@ -20,7 +20,7 @@ public class FieldView extends View {
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    private Character character;
+    private Character character=new Character();
 
     public FieldView(Context context) {
         super(context);
@@ -50,7 +50,7 @@ public class FieldView extends View {
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
 
-        canvas.drawBitmap(imgField, 0, 0, paint);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(imgField,(int)(widthZone)*8,(int)(widthZone)*5,true), 0, 0, paint);
         drawCharacter(canvas,character);
     }
 

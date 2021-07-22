@@ -43,20 +43,4 @@ public class Character {
         if(posX<8) posX++;
     }
 
-    public void move(Movement movement){
-        switch (movement){
-            case TOP:
-                moveTop();
-                break;
-            case LEFT:
-                moveLeft();
-                break;
-            case RIGHT:
-                moveRight();
-                break;
-            case BOTTOM:
-                moveBottom();
-                break;
-        }
-    }
 }
