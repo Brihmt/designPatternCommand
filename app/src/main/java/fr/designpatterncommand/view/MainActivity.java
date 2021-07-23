@@ -14,12 +14,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
 import fr.designpatterncommand.R;
 import fr.designpatterncommand.model.ManagerAction;
 import fr.designpatterncommand.model.Movement;
+import fr.designpatterncommand.model.command.ActionBottom;
+import fr.designpatterncommand.model.command.ActionLeft;
+import fr.designpatterncommand.model.command.ActionRight;
 import fr.designpatterncommand.model.command.ActionTop;
 import fr.designpatterncommand.model.command.Command;
 import fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder;
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter adapter;
     //TODO: Ajouter et supprimer les éléments de la liste d'image lors du drag and drop
-    private int img[] = {R.drawable.arrowtop};
+    private int img[] = {};
 
     private ManagerAction manager;
 
@@ -63,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         ll3.setOnDragListener(myDragEventListener);
         adapter = new MyAdapter(this, img);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+
 
         imageViewTop.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
@@ -77,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViewTop);
                 v.startDrag(dragData,myShadow,null,0);
                 return true;
+
             }
+
         }
         );
 
@@ -175,16 +182,19 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("testui","id: " +v.getId());
                     switch((String)clip.getItemAt(0).getText()){
                         case "Top":
-                            //manager.addAction();
+                            manager.addAction(new ActionTop());
                             addImg(R.drawable.arrowtop);
                             break;
                         case "Bottom":
+                            manager.addAction(new ActionBottom());
                             addImg(R.drawable.arrowbottom);
                             break;
                         case "Left":
+                            manager.addAction(new ActionLeft());
                             addImg(R.drawable.arrowleft);
                             break;
                         case "Right":
+                            manager.addAction(new ActionRight());
                             addImg(R.drawable.arrowright);
                             break;
                     }
@@ -215,6 +225,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void clicButtonStart(View sender){
-        //manager.execCommandList();
+        manager.execCommandList((FieldView) findViewById(R.id.fieldView));
     }
 }

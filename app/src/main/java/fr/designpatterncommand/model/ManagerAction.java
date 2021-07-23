@@ -1,10 +1,13 @@
 package fr.designpatterncommand.model;
 
+import android.graphics.Canvas;
 import android.os.SystemClock;
+import android.util.Log;
 
 import java.util.LinkedList;
 import fr.designpatterncommand.model.command.Command;
 import fr.designpatterncommand.view.FieldView;
+import fr.designpatterncommand.view.MainActivity;
 
 // TODO: Ajouter les méthodes qu'il doit contenir (https://lucid.app/lucidchart/7739d042-abe3-40e2-874b-5fccab3fe446/edit?shared=true&page=0_0)
 public class ManagerAction {
@@ -25,6 +28,7 @@ public class ManagerAction {
     }
 
     public void execCommandList(FieldView view){
+
         for (Command command:commandList) {
             switch (command.operation()){
                 case TOP:
@@ -41,8 +45,11 @@ public class ManagerAction {
                     break;
             }
             view.setCharacter(character);
-            SystemClock.sleep(500);
+            SystemClock.sleep(5);
             view.invalidate();
+
+            Log.i("testPerso", "x: " + character.getPosX());
+            Log.i("testPerso", "y: " + character.getPosY());
         }
     }
 }
