@@ -1,6 +1,7 @@
 package fr.designpatterncommand.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout ll2,ll3;
     private Button btnStart;
     private RecyclerView recyclerView;
+    private MyAdapter adapter;
+    //TODO: Ajouter et supprimer les éléments de la liste d'image lors du drag and drop
+    private int img[] = {R.drawable.arrowtop};
 
     private ManagerAction manager;
 
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         imageViewRight.setOnDragListener(myDragEventListener);
         ll2.setOnDragListener(myDragEventListener);
         ll3.setOnDragListener(myDragEventListener);
+        adapter = new MyAdapter(this, img);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         imageViewTop.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
