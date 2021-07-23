@@ -19,6 +19,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         this.img = img;
     }
 
+    public void setImg(int[] img) {
+        this.img = img;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
         public ViewHolder(View view){

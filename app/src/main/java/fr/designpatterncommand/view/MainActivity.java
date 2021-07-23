@@ -15,9 +15,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import java.util.Arrays;
+
 import fr.designpatterncommand.R;
 import fr.designpatterncommand.model.ManagerAction;
 import fr.designpatterncommand.model.Movement;
+import fr.designpatterncommand.model.command.ActionTop;
 import fr.designpatterncommand.model.command.Command;
 import fr.designpatterncommand.model.dragShadowBuilder.MyDragShadowBuilder;
 
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         imageViewTop.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v) {
-                ClipData.Item item = new ClipData.Item("0");
+                ClipData.Item item = new ClipData.Item("Top");
 
                 ClipData dragData = new ClipData(
                         (CharSequence) v.getTag(),
@@ -77,6 +80,59 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
+
+        imageViewBottom.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                ClipData.Item item = new ClipData.Item("Bottom");
+
+                ClipData dragData = new ClipData(
+                        (CharSequence) v.getTag(),
+                        new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN } ,
+                        item);
+                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViewBottom);
+                v.startDrag(dragData,myShadow,null,0);
+                return true;
+            }
+        }
+        );
+
+        imageViewLeft.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                ClipData.Item item = new ClipData.Item("Left");
+
+                ClipData dragData = new ClipData(
+                        (CharSequence) v.getTag(),
+                        new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN } ,
+                        item);
+                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViewLeft);
+                v.startDrag(dragData,myShadow,null,0);
+                return true;
+            }
+        }
+        );
+
+        imageViewRight.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                ClipData.Item item = new ClipData.Item("Right");
+
+                ClipData dragData = new ClipData(
+                        (CharSequence) v.getTag(),
+                        new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN } ,
+                        item);
+                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViewRight);
+                v.startDrag(dragData,myShadow,null,0);
+                return true;
+            }
+        }
+        );
+    }
+
+    public void addImg(int img){
+        this.img = Arrays.copyOf(this.img, this.img.length+1);
+        this.img[this.img.length-1] = img;
     }
 
     protected class MyDragEventListener implements View.OnDragListener {
@@ -117,7 +173,23 @@ public class MainActivity extends AppCompatActivity {
                     ClipData clip=event.getClipData();
                     Log.i("testui",(String)clip.getItemAt(0).getText());
                     Log.i("testui","id: " +v.getId());
-                    //manager.addAction(Movement.values()[(int)clip.getItemAt(0).getText()]);
+                    switch((String)clip.getItemAt(0).getText()){
+                        case "Top":
+                            //manager.addAction();
+                            addImg(R.drawable.arrowtop);
+                            break;
+                        case "Bottom":
+                            addImg(R.drawable.arrowbottom);
+                            break;
+                        case "Left":
+                            addImg(R.drawable.arrowleft);
+                            break;
+                        case "Right":
+                            addImg(R.drawable.arrowright);
+                            break;
+                    }
+                    adapter.setImg(img);
+                    adapter.notifyDataSetChanged();
                     v.invalidate();
                     return true;
 
