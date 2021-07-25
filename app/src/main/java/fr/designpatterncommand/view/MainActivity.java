@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageViewTop, imageViewBottom, imageViewLeft, imageViewRight;
     private LinearLayout ll2,ll3;
-    private Button btnStart;
+    private Button btnStart, btnRestart;
     private RecyclerView recyclerView;
     private MyAdapter adapter;
     //TODO: Ajouter et supprimer les éléments de la liste d'image lors du drag and drop
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         ll2=(LinearLayout)findViewById(R.id.ll2);
         ll3=(LinearLayout)findViewById(R.id.ll3);
         btnStart=(Button)findViewById(R.id.btnStart);
+        btnRestart=(Button)findViewById(R.id.btnRestart);
         recyclerView=(RecyclerView)findViewById(R.id.rclView);
         
         MyDragEventListener myDragEventListener = new MyDragEventListener();
@@ -226,5 +227,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void clicButtonStart(View sender){
         manager.execCommandList((FieldView) findViewById(R.id.fieldView));
+    }
+
+    public void clicButtonRestart(View sender){
+        manager.delAllAction();
+        img = new int[]{};
+        adapter.setImg(img);
+        adapter.notifyDataSetChanged();
     }
 }

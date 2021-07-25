@@ -11,7 +11,7 @@ import fr.designpatterncommand.model.command.Command;
 import fr.designpatterncommand.view.FieldView;
 import fr.designpatterncommand.view.MainActivity;
 
-// TODO: Ajouter les méthodes qu'il doit contenir (https://lucid.app/lucidchart/7739d042-abe3-40e2-874b-5fccab3fe446/edit?shared=true&page=0_0)
+// (https://lucid.app/lucidchart/7739d042-abe3-40e2-874b-5fccab3fe446/edit?shared=true&page=0_0)
 public class ManagerAction {
     private LinkedList<Command> commandList;
     private Character character;
@@ -33,6 +33,8 @@ public class ManagerAction {
     public void delAction(Command command){
         commandList.remove(command);
     }
+
+    public void delAllAction() { commandList.clear(); }
 
     public void execCommandList(FieldView view){
 

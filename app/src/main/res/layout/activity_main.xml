@@ -23,13 +23,26 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="208dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="clicButtonStart"
-        android:text="@string/lblStart" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="clicButtonStart"
+            android:text="@string/lblStart" />
+
+        <Button
+            android:id="@+id/btnRestart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clicButtonRestart"
+            android:text="@string/restart" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll3"
