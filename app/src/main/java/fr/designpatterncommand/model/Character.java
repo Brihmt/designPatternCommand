@@ -2,6 +2,7 @@ package fr.designpatterncommand.model;
 
 import android.widget.ImageView;
 
+import java.util.Random;
 import java.util.Vector;
 
 import fr.designpatterncommand.R;
@@ -12,11 +13,17 @@ public class Character {
     private int characterImg;
 
     public Character(){
-        posX = 1;
-        posY = 1;
+        Random ran= new Random();
+        posX = ran.nextInt(8);
+        posY = ran.nextInt(5);
         characterImg = R.drawable.character;
     }
 
+    public void changePosition(){
+        Random ran=new Random();
+        posX=ran.nextInt(8);
+        posY=ran.nextInt(5);
+    }
     public int getPosX() {
         return posX;
     }

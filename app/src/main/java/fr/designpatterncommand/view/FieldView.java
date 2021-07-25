@@ -20,7 +20,7 @@ public class FieldView extends View {
     private Bitmap imgCharacter;
     private int widthZone;
 
-    int x,y;
+    int exitX,exitY;
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private Character character=new Character();
@@ -28,17 +28,14 @@ public class FieldView extends View {
     public FieldView(Context context) {
         super(context);
         widthZone=1;
-        Random a=new Random();
-        x= a.nextInt(7)+2;
-        y= a.nextInt(4)+2;
     }
 
     public FieldView(Context context, AttributeSet attrs) {
         super(context, attrs);
         widthZone=1;
         Random a=new Random();
-        x= a.nextInt(8);
-        y= a.nextInt(5);
+        exitX= a.nextInt(8);
+        exitY= a.nextInt(5);
     }
 
     @Override
@@ -60,7 +57,7 @@ public class FieldView extends View {
         super.onDraw(canvas);
 
         canvas.drawBitmap(Bitmap.createScaledBitmap(imgField,(int)(widthZone)*8,(int)(widthZone)*5,true), 0, 0, paint);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.door),widthZone,widthZone,true), widthZone*x,widthZone*y,paint);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.door),widthZone,widthZone,true), widthZone*exitX,widthZone*exitY,paint);
         drawCharacter(canvas,character);
     }
 
@@ -68,9 +65,9 @@ public class FieldView extends View {
         character=charac;
     }
 
-    public void setFinish(int x, int y)
+    public void setExit(int x, int y)
     {
-        this.x=x;
-        this.y=y;
+        exitX=x;
+        exitY=y;
     }
 }
