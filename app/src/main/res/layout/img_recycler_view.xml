@@ -4,18 +4,13 @@
     android:layout_height="70dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
     android:gravity="center_vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="85dp"
         android:layout_height="match_parent"
-        android:gravity="left"
-        android:orientation="vertical">
+        app:srcCompat="@drawable/arrowtop" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="78dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/arrowtop" />
-    </LinearLayout>
 </FrameLayout>

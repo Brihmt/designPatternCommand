@@ -49,7 +49,7 @@ public class FieldView extends View {
 
     public void drawCharacter(Canvas canvas, Character chara){
         Log.i("test", "J'affiche le personnage là");
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), chara.getImg()),(int)widthZone,(int)widthZone,true),(int)widthZone*chara.getPosX(),(int)widthZone*chara.getPosY(),paint);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), chara.getImg()),(int)widthZone,(int)widthZone,true),(int)widthZone*(chara.getPosX()-1),(int)widthZone*(chara.getPosY()-1),paint);
     }
 
     @Override
