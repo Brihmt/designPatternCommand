@@ -19,6 +19,7 @@ public class FieldView extends View {
     private Bitmap imgField;
     private Bitmap imgCharacter;
     private int widthZone;
+    private boolean isExited;
 
     int exitX,exitY;
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -36,6 +37,7 @@ public class FieldView extends View {
         Random a=new Random();
         exitX= a.nextInt(8);
         exitY= a.nextInt(5);
+        isExited = false;
     }
 
     @Override
@@ -59,6 +61,10 @@ public class FieldView extends View {
         canvas.drawBitmap(Bitmap.createScaledBitmap(imgField,(int)(widthZone)*8,(int)(widthZone)*5,true), 0, 0, paint);
         canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.door),widthZone,widthZone,true), widthZone*exitX,widthZone*exitY,paint);
         drawCharacter(canvas,character);
+
+        if(character.getPosX()==exitX && character.getPosY()==exitY){
+            isExited = true;
+        }
     }
 
     public void setCharacter(Character charac){
@@ -69,5 +75,13 @@ public class FieldView extends View {
     {
         exitX=x;
         exitY=y;
+    }
+
+    public boolean isExited() {
+        return isExited;
+    }
+
+    public void setExited(boolean exited) {
+        isExited = exited;
     }
 }

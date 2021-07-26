@@ -1,9 +1,6 @@
 package fr.designpatterncommand.model;
 
-import android.widget.ImageView;
-
 import java.util.Random;
-import java.util.Vector;
 
 import fr.designpatterncommand.R;
 

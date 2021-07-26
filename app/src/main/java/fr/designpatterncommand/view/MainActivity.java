@@ -1,11 +1,13 @@
 package fr.designpatterncommand.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnStart, btnRestart;
     private RecyclerView recyclerView;
     private MyAdapter adapter;
-    //TODO: Ajouter et supprimer les éléments de la liste d'image lors du drag and drop
     private int img[] = {};
 
     private ManagerAction manager;
@@ -226,7 +227,12 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void clicButtonStart(View sender){
-        manager.execCommandList((FieldView) findViewById(R.id.fieldView));
+        FieldView fieldView = (FieldView) findViewById(R.id.fieldView);
+        manager.execCommandList(fieldView);
+        if(fieldView.isExited()){
+            newGame(fieldView);
+            fieldView.setExited(false);
+        }
     }
 
     public void clicButtonRestart(View sender){
@@ -234,5 +240,22 @@ public class MainActivity extends AppCompatActivity {
         img = new int[]{};
         adapter.setImg(img);
         adapter.notifyDataSetChanged();
+    }
+
+    public void newGame(FieldView sender){
+        AlertDialog newGame = new AlertDialog.Builder(this).create();
+        newGame.setTitle( "End Game !");
+        newGame.setMessage( "You reached the exit! Do you want to play an other game?" );
+        newGame.setButton( AlertDialog.BUTTON_POSITIVE, "Yes", new AlertDialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which){
+                manager.restartGame(sender);
+            }
+        });
+        newGame.setButton( AlertDialog.BUTTON_NEGATIVE, "No", new AlertDialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which){
+                finish();
+            }
+        });
+        newGame.show();
     }
 }
