@@ -11,15 +11,15 @@ public class Character {
 
     public Character(){
         Random ran= new Random();
-        posX = ran.nextInt(8);
-        posY = ran.nextInt(5);
+        posX = ran.nextInt(7);
+        posY = ran.nextInt(4);
         characterImg = R.drawable.character;
     }
 
     public void changePosition(){
         Random ran=new Random();
-        posX=ran.nextInt(8);
-        posY=ran.nextInt(5);
+        posX = 1 + ran.nextInt(7);
+        posY = 1 + ran.nextInt(4);
     }
     public int getPosX() {
         return posX;

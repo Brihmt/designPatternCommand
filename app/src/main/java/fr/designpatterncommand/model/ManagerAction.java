@@ -15,15 +15,13 @@ import fr.designpatterncommand.view.MainActivity;
 public class ManagerAction {
     private LinkedList<Command> commandList;
     private Character character;
-    int exitX;
-    int exitY;
+    private Exit exit;
 
     public ManagerAction(){
         commandList = new LinkedList<Command>();
         character = new Character();
+        exit = new Exit();
         Random ran= new Random();
-        exitX=ran.nextInt(8);
-        exitY=ran.nextInt(5);
     }
 
     public void addAction(Command command){
@@ -59,25 +57,24 @@ public class ManagerAction {
 
             Log.i("testPerso", "x: " + character.getPosX());
             Log.i("testPerso", "y: " + character.getPosY());
+            Log.i("testPerso", "exit x: " + exit.getPosX());
+            Log.i("testPerso", "exit y: " + exit.getPosY());
         }
     }
 
-    public void restartGame(FieldView view){
+    public void init(FieldView view){
         Random ran= new Random();
         int var1,var2;
         //TODO: restart la sortie/ possition du perso / des murs et les passer à la view
         character.changePosition();
 
-        exitX=ran.nextInt(8);
-        exitY=ran.nextInt(5);
-        while(exitX==character.getPosX() && exitY==character.getPosY()){
-            exitX=ran.nextInt(8);
-            exitY=ran.nextInt(5);
-        }
+        do{
+            exit.changePosition();
+        } while (exit.getPosX()==character.getPosX() && exit.getPosY()==character.getPosY());
 
 
         view.setCharacter(character);
-        view.setExit(exitX,exitY);
+        view.setExit(exit);
         view.invalidate();
     }
 }

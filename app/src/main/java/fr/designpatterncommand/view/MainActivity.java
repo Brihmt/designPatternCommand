@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         manager=new ManagerAction();
+        manager.init((FieldView) findViewById(R.id.fieldView));
 
         imageViewTop=(ImageView)findViewById(R.id.imgViewTop);
         imageViewBottom=(ImageView)findViewById(R.id.imgViewBottom);
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         newGame.setMessage( "You reached the exit! Do you want to play an other game?" );
         newGame.setButton( AlertDialog.BUTTON_POSITIVE, "Yes", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which){
-                manager.restartGame(sender);
+                manager.init(sender);
             }
         });
         newGame.setButton( AlertDialog.BUTTON_NEGATIVE, "No", new AlertDialog.OnClickListener() {

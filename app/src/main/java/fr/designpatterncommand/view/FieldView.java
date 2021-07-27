@@ -14,6 +14,7 @@ import java.util.Random;
 
 import fr.designpatterncommand.model.Character;
 import fr.designpatterncommand.R;
+import fr.designpatterncommand.model.Exit;
 
 public class FieldView extends View {
     private Bitmap imgField;
@@ -21,10 +22,10 @@ public class FieldView extends View {
     private int widthZone;
     private boolean isExited;
 
-    int exitX,exitY;
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    private Character character=new Character();
+    private Character character = new Character();
+    private Exit exit = new Exit();
 
     public FieldView(Context context) {
         super(context);
@@ -35,8 +36,6 @@ public class FieldView extends View {
         super(context, attrs);
         widthZone=1;
         Random a=new Random();
-        exitX= a.nextInt(8);
-        exitY= a.nextInt(5);
         isExited = false;
     }
 
@@ -59,10 +58,10 @@ public class FieldView extends View {
         super.onDraw(canvas);
 
         canvas.drawBitmap(Bitmap.createScaledBitmap(imgField,(int)(widthZone)*8,(int)(widthZone)*5,true), 0, 0, paint);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.door),widthZone,widthZone,true), widthZone*exitX,widthZone*exitY,paint);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.door),widthZone,widthZone,true), widthZone*(exit.getPosX()-1),widthZone*(exit.getPosY()-1),paint);
         drawCharacter(canvas,character);
 
-        if(character.getPosX()==exitX && character.getPosY()==exitY){
+        if(character.getPosX()==exit.getPosX() && character.getPosY()==exit.getPosY()){
             isExited = true;
         }
     }
@@ -71,10 +70,8 @@ public class FieldView extends View {
         character=charac;
     }
 
-    public void setExit(int x, int y)
-    {
-        exitX=x;
-        exitY=y;
+    public void setExit(Exit exit) {
+        this.exit=exit;
     }
 
     public boolean isExited() {
